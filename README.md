@@ -2,9 +2,18 @@
 
 演示视频：
 
-[ai2.mp4 http://pan.baidu.com/s/1mgpB5bE](http://pan.baidu.com/s/1mgpB5bE)
+行为树 AI 的真实运作过程：
 
-[ai1.mp4 http://pan.baidu.com/s/1c0AQCKC](http://pan.baidu.com/s/1c0AQCKC)
+https://www.bilibili.com/video/av44645818
+
+
+
+行为树 AI 的编辑和节点连接：
+
+https://www.bilibili.com/video/av44645517
+
+
+
 
 
 在线效果预览：
