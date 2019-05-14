@@ -2,17 +2,13 @@ package
 {
 	import com.greensock.TweenLite;
 	import com.greensock.TweenMax;
-	import com.greensock.easing.Quart;
 	import com.greensock.plugins.BezierPlugin;
 	import com.greensock.plugins.TweenPlugin;
 	
 	import flash.display.Sprite;
-	import flash.filesystem.FileMode;
-	import flash.filesystem.FileStream;
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
-	import tryai.AiUpdateMgr;
 	import tryai.ai.AINode;
 	
 	public class NodeContainer extends Sprite
@@ -140,7 +136,6 @@ package
 			drawAllSelArrow();
 		}
 		public var arrowDic:Dictionary = new Dictionary();
-		public var curFileX:FileX;
 
 		private var fb:FlashBox;
 		private function drawAllSelArrow():void
@@ -173,12 +168,10 @@ package
 			}
 		}
 		
-		public function showAiTree(fx:FileX):void
+		public function showAiTree(str:String):void
 		{
 			clear();
-			this.curFileX = fx;
-			var ob:Object = fx.data;
-			AiEditor.aiFileDesc.text = ob.desc;
+			var ob:Object = JSON.parse(str);
 			
 			var ox:int = 250;
 			var oy:int = 400;
@@ -224,7 +217,6 @@ package
 		{
 			Node.index = 0;
 			Node.flashDic = new Dictionary();
-			curFileX = null;
 			while(nodeContainer.numChildren){
 				var n:Node = nodeContainer.getChildAt(0) as Node;
 				n.dispose();
@@ -237,9 +229,6 @@ package
 		
 		public function save():void
 		{
-			if(!curFileX){
-				Alert.show("请新建或选定一个文件，再保存"); return;
-			}
 			var rootNum:int;
 			var root:Node;
 			forAllNode(function(n:Node):void{
@@ -252,25 +241,12 @@ package
 				Alert.show("根节点只能有一个"); return;
 			}
 			var all:Object = saveNodes(root);
-			var fileID:Number = parseInt(curFileX.f.name.replace(".ai",""));
-			var s:FileStream = new FileStream();
-				s.open(curFileX.f,FileMode.WRITE);
-				s.writeUTFBytes(JSON.stringify(all,null,"\t"));
-				s.close();
-				TweenLite.delayedCall(.2,function():void{
-					AIBrowser.one.refresh();
-					if(AiEditor.tryMode.selected){
-						AiUpdateMgr.one.JsonToAI(all);
-						var bossAi:AINode = AiUpdateMgr.one.get(0);
-						AINode.send = bossAi;
-					}else{
-						AiEditor.one.server.send(JSON.stringify({cmd:"save",msg:fileID}));
-					}
-				});
-				
+			var stringify:String = JSON.stringify(all,null,"\t");
+			trace("-----------");
+			trace(stringify);
+			trace("-----------");
 			function saveNodes(nd:Node):Object{
 				var ob:Object = {};
-				if(nd.parentNode==null) ob.desc = AiEditor.aiFileDesc.text;
 				ob.name = nd.txt;
 				ob.sel = nd.titleTxt;
 				ob.x = nd.x;

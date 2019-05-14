@@ -14,8 +14,6 @@ package
 			if(ww>0){
 				sizeW = ww;
 				sizeH = hh;
-				p.stage.nativeWindow.width = ww;
-				p.stage.nativeWindow.height = hh;
 			}
 			super(p, sizeW, sizeH, color, canResize, dragerSize);
 		}
@@ -38,8 +36,6 @@ package
 		{
 			var ww:Number = drager.x + drager.width;
 			var hh:Number = drager.y + drager.height;
-			stage.nativeWindow.width = ww;
-			stage.nativeWindow.height = hh;
 			SO("AppBG_W",ww);
 			SO("AppBG_H",hh);
 			dispatchEvent(new Event(Event.RESIZE));
@@ -48,8 +44,6 @@ package
 		{
 			var ww:Number = drager.x + drager.width;
 			var hh:Number = drager.y + drager.height;
-			stage.nativeWindow.width = ww+250;
-			stage.nativeWindow.height = hh+250;
 			dispatchEvent(new Event(Event.RESIZE));
 		}
 		public static function SO(key:String, val:*=null):*

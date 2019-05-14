@@ -159,9 +159,9 @@ package tryai.ai
 		{
 			time = 0;//重置时间
 			_stepNow = value;
-			if(send==this.root){
+//			if(send==this.root){
 				NodeContainer.one.flash(ID);
-			}
+//			}
 		}
 		private function rndChilds():void
 		{

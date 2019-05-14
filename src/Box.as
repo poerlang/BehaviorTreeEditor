@@ -87,9 +87,9 @@ package
 				if(lastX==drager.x && drager.y==lastY) return;
 			}
 			bg.bitmapData.dispose();
-			AiEditor.flashStage.quality = StageQuality.LOW;
+//			AiEditor.flashStage.quality = StageQuality.LOW;
 			bg.bitmapData = new BitmapData(sizeW,sizeH,false,_color);
-			AiEditor.flashStage.quality = StageQuality.HIGH;
+//			AiEditor.flashStage.quality = StageQuality.HIGH;
 			if(drager){
 				lastX = drager.x;
 				lastY = drager.y;

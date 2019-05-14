@@ -14,6 +14,7 @@ package props.noEvent
 		}
 		override protected function onChange(e:Event):void
 		{
+			return;
 			e.stopImmediatePropagation();
 			_text = _tf.text;
 			if(sendEvent){

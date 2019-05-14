@@ -52,7 +52,7 @@ package
 		{
 			if(isDrag){
 				this.startDrag();
-				if(stage)stage.quality = StageQuality.LOW;
+//				if(stage)stage.quality = StageQuality.LOW;
 			}
 		}
 		

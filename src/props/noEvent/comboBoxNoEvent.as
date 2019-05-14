@@ -16,6 +16,7 @@ package props.noEvent
 		}
 		override protected function onSelect(e:Event):void
 		{
+			return;
 			_open = false;
 			_dropDownButton.label = "+";
 			if(stage != null && stage.contains(_list))

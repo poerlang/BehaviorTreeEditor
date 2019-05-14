@@ -24,7 +24,7 @@ package props
 			body = new VBox(panel);
 			
 			setSize(220,350);
-			delBtn = new PushButton(null,0,0,"删除",onDelete); delBtn.setSize(43,20);
+//			delBtn = new PushButton(null,0,0,"删除",onDelete); delBtn.setSize(43,20);
 		}
 		
 		private function onDelete(e:*):void
@@ -42,7 +42,7 @@ package props
 			{
 				body.addChild(arr[i]);
 			}
-			body.addChild(delBtn);
+//			body.addChild(delBtn);
 		}
 	}
 }
